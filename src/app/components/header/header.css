@@ -160,21 +160,37 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .desktop-bar .search-slot {
-      animation: search-reveal 250ms ease-out;
+      clip-path: inset(0 0 0 0);
+      transition: clip-path 250ms ease-out;
+    }
+
+    @starting-style {
+      .desktop-bar .search-slot {
+        clip-path: inset(0 0 0 100%);
+      }
     }
 
     .desktop-bar .search-slot-leave {
-      animation: search-conceal 250ms ease-in forwards;
+      clip-path: inset(0 0 0 100%);
+      transition-timing-function: ease-in;
     }
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .search-overlay {
-    animation: overlay-slide 250ms ease-out;
+    transform: translateX(0);
+    transition: transform 250ms ease-out;
+  }
+
+  @starting-style {
+    .search-overlay {
+      transform: translateX(100%);
+    }
   }
 
   .search-overlay-leave {
-    animation: overlay-slide-out 250ms ease-in forwards;
+    transform: translateX(100%);
+    transition-timing-function: ease-in;
   }
 }
