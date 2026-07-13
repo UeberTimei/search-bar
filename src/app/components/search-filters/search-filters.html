@@ -1,0 +1,55 @@
+<div class="filters">
+  <div class="author-field">
+    <label for="search-author" class="author-label">Автор</label>
+    <input
+      #authorInput
+      id="search-author"
+      type="text"
+      placeholder="Имя или должность"
+      [value]="author()"
+      (input)="author.set(authorInput.value)"
+      class="text-input author-input"
+    />
+    <button
+      type="button"
+      [attr.aria-pressed]="onlyMe()"
+      (click)="onlyMe.set(!onlyMe())"
+      class="me-btn"
+      [class.me-btn--active]="onlyMe()"
+      aria-label="Только мои"
+    >
+      Я
+    </button>
+  </div>
+
+  <div class="flag-row">
+    @for (flag of flags; track flag.label) {
+      <label class="flag">
+        <input
+          #checkbox
+          type="checkbox"
+          [checked]="flag.value()"
+          (change)="flag.value.set(checkbox.checked)"
+        />
+        {{ flag.label }}
+      </label>
+    }
+  </div>
+
+  <div class="only-group">
+    <p class="only-title">Только</p>
+    <div class="flag-row">
+      @for (flag of onlyFlags; track flag.label) {
+        <label class="flag">
+          <input
+            #checkbox
+            type="checkbox"
+            [checked]="flag.value()"
+            (change)="flag.value.set(checkbox.checked)"
+          />
+          {{ flag.label }}
+        </label>
+      }
+    </div>
+  </div>
+</div>

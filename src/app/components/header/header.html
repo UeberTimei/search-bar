@@ -1,0 +1,89 @@
+<header class="header">
+  <div class="mobile-bar">
+    <button type="button" aria-label="Меню" class="icon-btn menu-btn">
+      <span class="icon icon-menu" aria-hidden="true"></span>
+    </button>
+
+    <a href="#" class="logo">
+      <img ngSrc="logo.png" width="150" height="56" alt="TILE.EXPERT" priority />
+    </a>
+
+    <button type="button" aria-label="Создать" class="icon-btn">
+      <span class="icon icon-plus" aria-hidden="true"></span>
+    </button>
+    <button type="button" aria-label="История" class="icon-btn">
+      <span class="icon icon-history" aria-hidden="true"></span>
+    </button>
+    <button
+      type="button"
+      data-search-toggle
+      aria-label="Поиск"
+      [attr.aria-expanded]="searchOpen()"
+      (click)="openSearch()"
+      class="icon-btn"
+    >
+      <span class="icon icon-search" aria-hidden="true"></span>
+    </button>
+    <button type="button" aria-label="Уведомления" class="icon-btn">
+      <span class="icon icon-bell" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="desktop-bar">
+    <a href="#" class="logo">
+      <img ngSrc="logo.png" width="150" height="27" alt="TILE.EXPERT" priority />
+    </a>
+
+    <div class="middle">
+      @if (!searchOpen()) {
+        <nav class="nav" aria-label="Основная навигация">
+          @for (item of navItems; track item) {
+            <a href="#" class="nav-link">
+              <span class="icon icon-link" aria-hidden="true"></span>
+              {{ item }}
+            </a>
+          }
+        </nav>
+        <button
+          type="button"
+          data-search-toggle
+          aria-label="Поиск"
+          [attr.aria-expanded]="searchOpen()"
+          (click)="openSearch()"
+          class="icon-btn search-toggle"
+        >
+          <span class="icon icon-search" aria-hidden="true"></span>
+        </button>
+      } @else {
+        <app-search-box class="search-slot" animate.leave="search-slot-leave" />
+      }
+      <button type="button" aria-label="Создать" class="icon-btn">
+        <span class="icon icon-plus" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="user-actions">
+      <button type="button" class="icon-btn bell" aria-label="Уведомления, 32 непрочитанных">
+        <span class="icon icon-bell" aria-hidden="true"></span>
+        <span aria-hidden="true" class="badge">32</span>
+      </button>
+      <img ngSrc="ava.png" width="40" height="40" alt="Профиль" class="avatar" />
+    </div>
+  </div>
+
+  @if (searchOpen()) {
+    <div
+      class="search-overlay"
+      animate.leave="search-overlay-leave"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Поиск"
+    >
+      <div class="search-overlay-row">
+        <button type="button" aria-label="Назад" (click)="closeSearch()" class="icon-btn back-btn">
+          <span class="icon icon-back" aria-hidden="true"></span>
+        </button>
+        <app-search-box class="search-slot" />
+      </div>
+    </div>
+  }
+</header>

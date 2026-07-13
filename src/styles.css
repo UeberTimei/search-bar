@@ -1,3 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  --color-primary: #1877d2;
+  --color-accent: #2563eb;
+  --color-accent-light: #93c5fd;
+  --color-danger: #dc2626;
+  --color-white: #fff;
+  --color-text: #111827;
+  --color-text-dark: #1f2937;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6b7280;
+  --color-placeholder: #9ca3af;
+  --color-gray-300: #d1d5db;
+  --color-border: #e5e7eb;
+  --color-surface-muted: #f3f4f6;
+
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+}
+
+.icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.icon-menu {
+  width: 20px;
+  height: 20px;
+  mask-image: url('/icons/menu.svg');
+}
+
+.icon-plus {
+  mask-image: url('/icons/plus.svg');
+}
+
+.icon-history {
+  mask-image: url('/icons/history.svg');
+}
+
+.icon-search {
+  mask-image: url('/icons/search.svg');
+}
+
+.icon-bell {
+  mask-image: url('/icons/bell.svg');
+}
+
+.icon-back {
+  mask-image: url('/icons/back.svg');
+}
+
+.icon-link {
+  width: 16px;
+  height: 16px;
+  mask-image: url('/icons/link.svg');
+  rotate: 90deg;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px;
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.text-input {
+  width: 100%;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.text-input::placeholder {
+  color: var(--color-placeholder);
+}

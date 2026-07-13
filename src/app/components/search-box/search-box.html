@@ -1,0 +1,29 @@
+<div class="search" role="search">
+  <input
+    #searchInput
+    type="search"
+    placeholder="Поисковый запрос"
+    aria-label="Поисковый запрос"
+    [value]="query()"
+    (input)="query.set(searchInput.value)"
+    (focus)="panelOpen.set(true)"
+    class="text-input search-input"
+  />
+  @if (panelOpen()) {
+    <div class="panel">
+      <div class="history">
+        <p class="history-title">История</p>
+        <ul class="history-list">
+          @for (item of history; track item) {
+            <li>
+              <button type="button" (click)="pick(item)" class="history-item">
+                {{ item }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+      <app-search-filters class="filters-slot" />
+    </div>
+  }
+</div>
