@@ -1,59 +1,28 @@
-# SearchBar
+# Search Bar
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.6.
+## Стек
 
-## Development server
+- Angular 22 (standalone-компоненты, signals, zoneless)
+- Tailwind CSS 4 + обычный CSS компонентов
+- Vitest — юнит-тесты
+- ESLint (angular-eslint) + Prettier
 
-To start a local development server, run:
+## Запуск
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Версия Node зафиксирована в `.nvmrc` (`nvm use` / `fnm use`).
 
 ```bash
-ng generate component component-name
+bun install
+bun start        # dev-сервер на http://localhost:4200
+bun run test     # юнит-тесты (не `bun test` — он запускает встроенный раннер bun вместо Vitest)
+bun run lint     # линтер
+bun run build    # прод-сборка
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Что реализовано
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Адаптивность**: отдельные раскладки шапки для мобильной и десктопной ширины.
+- **Поиск**: открывается кнопкой, закрывается по `Escape` и клику вне шапки; фокус при открытии переходит в поле, при закрытии возвращается на кнопку.
+- **История запросов**: панель под полем, выбор пункта подставляет запрос и возвращает фокус в поле.
+- **Доступность**: ARIA-атрибуты (`role="search"`, `aria-expanded`, `aria-pressed`, `aria-label`), управление с клавиатуры, `NgOptimizedImage` для картинок.
+- **Состояние** — только сигналы, без внешних стейт-менеджеров: для задачи такого размера их не нужно.
